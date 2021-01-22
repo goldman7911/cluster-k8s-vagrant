@@ -11,6 +11,9 @@ mkdir -p /home/vagrant/.kube
 sudo cp -i /etc/kubernetes/admin.conf /home/vagrant/.kube/config
 sudo chown vagrant:vagrant /home/vagrant/.kube/config
 
+#Aguardar estabilizar
+sleep 30
+
 #Instalar o CNI Calico
 kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
 kubectl create -f /vagrant/custom-resources.yaml
