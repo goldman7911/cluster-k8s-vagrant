@@ -5,7 +5,7 @@ mkdir -p /home/vagrant/.kube
 sudo cp -i /etc/kubernetes/admin.conf /home/vagrant/.kube/config
 sudo chown vagrant:vagrant /home/vagrant/.kube/config
 
-sudo kubeadm init --apiserver-advertise-address=192.168.33.10 --pod-network-cidr=192.168.33.0/24 > /vagrant/join.k8s && \
+sudo kubeadm init --apiserver-advertise-address=192.168.33.10 --pod-network-cidr=192.168.33.0/24 > /vagrant/join.k8s
 
 #Instalar o CNI Calico
 kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
