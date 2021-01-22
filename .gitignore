@@ -130,3 +130,4 @@ dmypy.json
 
 #Vagrant
 .vagrant/
+join.k8s
