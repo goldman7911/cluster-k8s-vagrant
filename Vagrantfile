@@ -31,6 +31,7 @@ Vagrant.configure("2") do |config|
         vb.customize ["modifyvm", :id, "--cpus", "2"]
       end
       node.vm.provision :shell, path: "script_base.sh"
+      #node.vm.provision :shell, path: "worker.sh"
     end
   end
 end
