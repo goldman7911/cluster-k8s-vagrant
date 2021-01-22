@@ -13,7 +13,10 @@ kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
 kubectl create -f /vagrant/custom-resources.yaml
 
 #Aguardar o coreDns
-sleep 120
+sleep 240
+
+#Untaint
+kubectl taint nodes --all node-role.kubernetes.io/master-
 
 #Instalar Helm
 
@@ -23,5 +26,3 @@ echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt
 sudo apt-get update
 sudo apt-get -y install helm
 
-#Untaint
-kubectl taint nodes --all node-role.kubernetes.io/master-
