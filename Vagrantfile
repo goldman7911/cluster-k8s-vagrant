@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
     cp.vm.provider "virtualbox" do |vb|
       vb.name = "k8s-ControlPlane"
       vb.customize ["modifyvm", :id, "--memory", "2048"]
-      vb.customize ["modifyvm", :id, "--cpus", "1"]
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
     end
     cp.vm.provision :shell, path: "script_base.sh"
     cp.vm.provision :shell, path: "control_plane.sh"
