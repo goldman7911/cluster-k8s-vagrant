@@ -16,7 +16,7 @@ kubectl create -f /vagrant/custom-resources.yaml
 sleep 240
 
 #Untaint
-kubectl taint nodes --all node-role.kubernetes.io/master-
+#kubectl taint nodes --all node-role.kubernetes.io/master-
 
 #Instalar Helm
 
