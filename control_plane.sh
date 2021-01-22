@@ -17,8 +17,8 @@ echo 'sleep 30'
 sleep 30
 
 #Instalar o CNI Calico
-sudo export KUBECONFIG=/etc/kubernetes/admin.conf
-sudo kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
+sudo export KUBECONFIG=/etc/kubernetes/admin.conf && \
+sudo kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml && \
 sudo kubectl create -f /vagrant/custom-resources.yaml
 
 #Aguardar o coreDns
