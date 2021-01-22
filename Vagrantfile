@@ -11,15 +11,15 @@ Vagrant.configure("2") do |config|
     cp.vm.network "private_network", ip: "192.168.33.10"
     cp.vm.provider "virtualbox" do |vb|
       vb.name = "k8s-ControlPlane"
-      vb.customize ["modifyvm", :id, "--memory", "2048"]
-      vb.customize ["modifyvm", :id, "--cpus", "2"]
+      vb.customize ["modifyvm", :id, "--memory", "4096"]
+      vb.customize ["modifyvm", :id, "--cpus", "4"]
     end
     cp.vm.provision :shell, path: "script_base.sh"
     cp.vm.provision :shell, path: "control_plane.sh"
   end
 
   #Modificar conforme requesitos do host
-  (1..2).each do |i|
+  (1..1).each do |i|
     config.vm.define "worker-#{i}" do |node|
       node.vm.box = "ubuntu/focal64"
       node.vm.hostname = "k8s-Worker-#{i}"
@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
       node.vm.provider "virtualbox" do |vb|
         vb.name = "k8s-Worker-#{i}"
         vb.customize ["modifyvm", :id, "--memory", "4096"]
-        vb.customize ["modifyvm", :id, "--cpus", "2"]
+        vb.customize ["modifyvm", :id, "--cpus", "4"]
       end
       node.vm.provision :shell, path: "script_base.sh"
       node.vm.provision :shell, path: "worker.sh"

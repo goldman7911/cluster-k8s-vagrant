@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 #Aguardar estabilizar
+echo 'sleep 120'
 sleep 120
 
 #Inicializar o cluster
@@ -12,6 +13,7 @@ sudo cp -i /etc/kubernetes/admin.conf /home/vagrant/.kube/config
 sudo chown vagrant:vagrant /home/vagrant/.kube/config
 
 #Aguardar estabilizar
+echo 'sleep 30'
 sleep 30
 
 #Instalar o CNI Calico
@@ -19,10 +21,11 @@ kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
 kubectl create -f /vagrant/custom-resources.yaml
 
 #Aguardar o coreDns
+echo 'sleep 240'
 sleep 240
 
 #Untaint
-#kubectl taint nodes --all node-role.kubernetes.io/master-
+kubectl taint nodes --all node-role.kubernetes.io/master-
 
 #Instalar Helm
 
