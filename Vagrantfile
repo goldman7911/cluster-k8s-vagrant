@@ -18,12 +18,13 @@ Vagrant.configure("2") do |config|
     cp.vm.provision :shell, path: "control_plane.sh"
   end
 
+  #Modificar conforme requesitos do host
   (1..1).each do |i|
     config.vm.define "worker-#{i}" do |node|
       node.vm.box = "ubuntu/focal64"
       node.vm.hostname = "k8s-Worker-#{i}"
       node.vm.disk :disk, size: "50GB", primary: true
-      node.vm.network "private_network", type: "dhcp"
+      node.vm.network "private_network", ip: "192.168.33.2#{i}"
       node.vm.provider "virtualbox" do |vb|
         vb.name = "k8s-Worker-#{i}"
         vb.customize ["modifyvm", :id, "--memory", "4096"]
