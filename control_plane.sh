@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+#Aguardar estabilizar
+sleep 120
+
 #Inicializar o cluster
 sudo kubeadm init --apiserver-advertise-address=192.168.33.10 --pod-network-cidr=192.168.33.0/24 > /vagrant/join.k8s
 
